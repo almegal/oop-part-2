@@ -11,13 +11,24 @@ public class Main {
         Bicycle bicycle = new Bicycle("bicycle1", 2);
         Bicycle bicycle2 = new Bicycle("bicycle2", 2);
 
-        Checkable station = new ServiceStation();
+        ServiceStation station = new ServiceStation();
 
-        station.check(car);
-        station.check(car2);
-        station.check(truck);
-        station.check(truck2);
-        station.check(bicycle);
-        station.check(bicycle2);
+        Vehicle[] carQueue = new Vehicle[]{
+                car,
+                car2,
+                truck,
+                truck2,
+                bicycle,
+                bicycle2
+        };
+        for (Vehicle vehicle : carQueue) {
+           if(vehicle instanceof Car) {
+               station.check((Car) vehicle);
+           } else if(vehicle instanceof Truck) {
+               station.check((Truck) vehicle);
+           } else if(vehicle instanceof Bicycle) {
+               station.check((Bicycle) vehicle);
+           }
+        }
     }
 }
