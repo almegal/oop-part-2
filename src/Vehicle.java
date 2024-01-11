@@ -1,4 +1,4 @@
-public abstract class Vehicle {
+public abstract class Vehicle implements Checkable {
     final private String modelName;
     final private int wheelsCount;
 
@@ -10,6 +10,17 @@ public abstract class Vehicle {
     public void updateTyre() {
         System.out.println("Меняем покрышку");
     }
+
+    public void startService() {
+        System.out.println("Обслуживаем " + getModelName());
+    }
+
+    public void changeTyre() {
+        for (int i = 0; i < getWheelsCount(); i++) {
+            updateTyre();
+        }
+    }
+
     //getters
     public String getModelName() {
         return modelName;
